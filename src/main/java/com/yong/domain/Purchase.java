@@ -1,5 +1,7 @@
 package com.yong.domain;
 
+import com.yong.member.Member;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;

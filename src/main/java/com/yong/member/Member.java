@@ -1,9 +1,14 @@
-package com.yong.domain;
+package com.yong.member;
+
+import com.yong.domain.Address;
+import com.yong.domain.Purchase;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
 public class Member {
     @Id
     @Column(name = "member_id")
