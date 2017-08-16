@@ -1,14 +1,17 @@
-package com.yong.member;
+package com.yong.domain;
 
-import com.yong.domain.Address;
-import com.yong.domain.Purchase;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Member {
     @Id
     @Column(name = "member_id")
@@ -16,6 +19,7 @@ public class Member {
     private Long id;
 
     @Column(name = "member_name")
+    @NonNull
     private String name;
 
     @Embedded

@@ -1,5 +1,6 @@
-package com.yong.member;
+package com.yong.repository;
 
+import com.yong.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

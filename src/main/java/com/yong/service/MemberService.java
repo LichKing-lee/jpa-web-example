@@ -1,11 +1,13 @@
-package com.yong.member;
+package com.yong.service;
 
+import com.yong.domain.Member;
+import com.yong.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @Transactional
@@ -20,10 +22,11 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(Member member) {
-        Member find = memberRepository.findByName(member.getName());
-
-        if(Objects.nonNull(find)){
+        try{
+            memberRepository.findByName(member.getName());
             throw new IllegalStateException("이미 존재하는 회원입니다. [" +member.getName()+ "]");
+        }catch (EmptyResultDataAccessException e){
+
         }
     }
 
