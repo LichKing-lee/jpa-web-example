@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
@@ -33,5 +34,19 @@ public class MemberServiceTest {
 
         // then
         assertThat(memberRepository.findOne(id), is(member));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void 중복_회원_예외(){
+        // given
+        Member member1 = new Member("lee");
+        Member member2 = new Member("lee");
+
+        // when
+        memberService.join(member1);
+        memberService.join(member2);
+
+        // then
+        fail();
     }
 }
