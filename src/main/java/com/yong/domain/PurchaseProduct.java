@@ -23,4 +23,12 @@ public class PurchaseProduct {
 
     @Column(name = "order_count")
     private int count;
+
+    public void cancel() {
+
+    }
+
+    public long getTotalPrice(){
+        return price * count;
+    }
 }

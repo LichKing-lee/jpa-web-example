@@ -19,4 +19,8 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     @Column(name = "delivery_status")
     private DeliveryStatus status;
+
+    public boolean isComplete(){
+        return status.isComplete();
+    }
 }

@@ -1,7 +1,8 @@
 package com.yong.domain;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -22,9 +23,35 @@ public class Purchase {
     private Delivery delivery;
 
     @Column(name = "order_date")
-    private LocalDate orderDate;
+    private LocalDateTime orderDatetime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "purchase_status")
     private PurchaseStatus status;
+
+    public static Purchase createPurchase(Member member, Delivery delivery, PurchaseProduct... products){
+        Purchase purchase = new Purchase();
+        purchase.member = member;
+        purchase.delivery = delivery;
+        purchase.purchaseProducts = Arrays.asList(products);
+        purchase.status = PurchaseStatus.ORDER;
+        purchase.orderDatetime = LocalDateTime.now();
+
+        return purchase;
+    }
+
+    public void cancel(){
+        if(this.delivery.isComplete()){
+            throw new RuntimeException("이미 배송완료된 상품은 취소가 불가능합니다.");
+        }
+
+        this.status = PurchaseStatus.CANCEL;
+        this.purchaseProducts.forEach(PurchaseProduct::cancel);
+    }
+
+    public long getTotalPrice(){
+        return this.purchaseProducts.stream()
+                .mapToLong(PurchaseProduct::getTotalPrice)
+                .sum();
+    }
 }
