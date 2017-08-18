@@ -1,8 +1,14 @@
 package com.yong.domain;
 
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@RequiredArgsConstructor
 public class Delivery {
     @Id
     @Column(name = "delivery_id")
@@ -14,6 +20,7 @@ public class Delivery {
     private Purchase purchase;
 
     @Embedded
+    @NonNull
     private Address address;
 
     @Enumerated(EnumType.STRING)

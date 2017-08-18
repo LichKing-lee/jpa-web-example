@@ -1,5 +1,7 @@
 package com.yong.domain;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -10,6 +12,7 @@ public class Purchase {
     @Id
     @Column(name = "purchase_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private Long id;
 
     @ManyToOne

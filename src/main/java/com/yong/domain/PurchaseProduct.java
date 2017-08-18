@@ -24,10 +24,10 @@ public class PurchaseProduct {
     @Column(name = "order_count")
     private int count;
 
-    public static PurchaseProduct createPurchaseProduct(Product product, long orderPrice, int count){
+    public static PurchaseProduct createPurchaseProduct(Product product, int count){
         PurchaseProduct purchaseProduct = new PurchaseProduct();
         purchaseProduct.product = product;
-        purchaseProduct.orderPrice = orderPrice;
+        purchaseProduct.orderPrice = product.getPrice();
         purchaseProduct.count = count;
 
         product.removeStock(count);

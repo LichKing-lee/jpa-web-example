@@ -1,7 +1,7 @@
 package com.yong.domain;
 
 public enum DeliveryStatus {
-    COMPLETE, CANCEL;
+    COMPLETE;
 
     public boolean isComplete(){
         return this == COMPLETE;
