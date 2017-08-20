@@ -30,6 +30,7 @@ public class Purchase {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "purchase_status")
+    @Getter
     private PurchaseStatus status;
 
     public static Purchase createPurchase(Member member, Delivery delivery, PurchaseProduct... products){
@@ -56,5 +57,9 @@ public class Purchase {
         return this.purchaseProducts.stream()
                 .mapToLong(PurchaseProduct::getTotalPrice)
                 .sum();
+    }
+
+    public int purchaseProductCount(){
+        return this.purchaseProducts.size();
     }
 }

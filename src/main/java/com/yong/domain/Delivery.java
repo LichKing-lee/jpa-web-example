@@ -5,6 +5,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @NoArgsConstructor
@@ -28,6 +29,8 @@ public class Delivery {
     private DeliveryStatus status;
 
     public boolean isComplete(){
-        return status.isComplete();
+        return Optional.ofNullable(this.status)
+                .map(DeliveryStatus::isComplete)
+                .orElse(false);
     }
 }

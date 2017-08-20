@@ -1,7 +1,7 @@
 package com.yong.domain;
 
 import com.yong.exception.NotEnoughStockException;
-import lombok.Getter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "product_type")
-@Getter
+@Data
 public abstract class Product {
     @Id
     @Column(name = "product_id")

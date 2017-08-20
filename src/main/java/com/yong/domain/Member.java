@@ -1,9 +1,6 @@
 package com.yong.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,6 +20,7 @@ public class Member {
     private String name;
 
     @Embedded
+    @Setter
     private Address address;
 
     @OneToMany(mappedBy = "member")

@@ -39,4 +39,8 @@ public class PurchaseService {
     public List<Purchase> findPurchases(PurchaseSearch search){
         return purchaseRepository.findAll(search);
     }
+
+    public Purchase findPurchase(Long id){
+        return purchaseRepository.findOne(id);
+    }
 }
