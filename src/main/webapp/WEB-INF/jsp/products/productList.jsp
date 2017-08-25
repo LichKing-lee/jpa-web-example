@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="../fragments/head.jsp"/>
@@ -27,14 +27,14 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${items}" var="item">
+            <c:forEach items="${products}" var="product">
                 <tr>
-                    <td>${item.id}</td>
-                    <td>${item.name}</td>
-                    <td>${item.price}</td>
-                    <td>${item.stockQuantity}</td>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.stockQuantity}</td>
                     <td>
-                        <a href="/items/${item.id}/edit" class="btn btn-primary" role="button">수정</a>
+                        <a href="/products/${product.id}/edit" class="btn btn-primary" role="button">수정</a>
                     </td>
                 </tr>
             </c:forEach>

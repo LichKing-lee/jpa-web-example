@@ -5,7 +5,7 @@
   Time: AM 8:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <jsp:include page="../fragments/head.jsp"/>
@@ -13,7 +13,7 @@
 
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp" />
-    <form role="form" action="/items/new" method="post">
+    <form role="form" action="/products/new" method="post">
         <div class="form-group">
             <label for="name">상품명</label>
             <input type="text" name="name" class="form-control" id="name" placeholder="이름을 입력하세요">
